@@ -1,0 +1,64 @@
+<!Doctype html>
+  <html lang="ko">
+  <head>
+    <meta charset="utf-8">
+      <title></title>
+        <style>
+
+          .wrap {
+          width : 650px;
+          height : 420px;
+          border : 1px solid black;
+          padding : 10px;
+          }
+
+          p:nth-of-type(odd) {
+            font-size :20px;
+            font-weight : bold;
+            text-align:left;
+            margin-left:2em;
+            line-height : 10px;
+          }
+
+          p:nth-of-type(even) {
+            font-size : 16px;
+            line-height : 20px;
+            margin-left : 7em;
+            margin-bottom :60px;
+          }
+
+          hr {
+            border:none;
+            border-top:1px dashed black;
+            height:1px;
+            width :400px;
+            margin-left:110px;
+            margin-top:-50px;
+          }
+
+        </style>
+      </head>
+    <body>
+
+        <!--box 감싸기-->
+      <div class="wrap">
+
+        <!--첫번째 문단 -->
+        <p> &rtrif; text-align는 font를 왼쪽, 오른쪽, 중앙 정렬할 때 사용</p><br>
+          <p>   ex)<br>
+                text-align : left &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 텍스트 왼쪽 정렬<br>
+                text-align : right &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 텍스트 오른쪽 정렬<br>
+                text align : center &nbsp;&nbsp;&nbsp; 텍스트 중앙 정렬<br>
+          </p>
+
+          <!--두번째 문단 -->
+           <p> &rtrif; text-decoration 은  &lt;a&gt; 태그에 언더라인을 제거하는 속성</p><br>
+            <p> ex)<br>
+                &lt;a href=http://www.chosun.com &gt;조선일보&lt;/a&gt;<br>
+                <hr></hr>
+              <div style="margin-left:112px;">a{text-decoration:none}<br>
+                &lt;a href=http://www.chosun.com &gt;조선일보&lt;/a&gt;</div>
+            </p>
+      </div>
+    </body>
+  </html>
