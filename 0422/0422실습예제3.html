@@ -1,0 +1,62 @@
+<!Doctype html>
+  <html lang="ko">
+    <head>
+      <meta charset="utf-8">
+      <title></title>
+        <style type="text/css">
+
+          .wrap {
+            width:620px;
+            height:300px;
+            border:1px solid black;
+            padding:1px;
+            margin:0 auto;
+            float:center;
+            display:relative;
+
+          }
+
+          .row {
+            display:flex;
+            width:600px;
+            height:130px;
+            border:5px solid gray;
+            background-color:white;
+            margin:1px;
+
+          }
+          .row:nth-child(2n) {
+            float:right;
+            flex-direction:row-reverse;
+          }
+
+          .box {
+            width:100px;
+            height:100px;
+            margin:5px;
+            padding:5px;
+            border:1px solid #cccccc;
+            float:left;
+          }
+
+      </style>
+    </head>
+  <body>
+    <div class="wrap">
+      <div class="row">
+        <div class="box">first</div>
+        <div class="box">second</div>
+      </div>
+      <div class="row">
+        <div class="box">first</div>
+        <div class="box">second</div>
+      </div>
+  </div>
+
+
+
+
+
+
+  </body>
+</html>

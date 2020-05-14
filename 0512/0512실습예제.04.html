@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+
+<title>반복문</title>
+</head>
+
+<body>
+  <script>
+
+      document.write('<li>1</li>'); //1은 그대로 출력
+
+      var i = 0;   // 1출력후 i를 0으로 지정
+
+      while(i<3){
+      document.write('<li>2</li>');
+        document.write('<li>3</li>');
+        i = i + 1; // i = 0인 경우 1이고 3보다 작음 따라서 2, 3 출력
+                   // i = 1인 경우 2이고 3보다 작음 따라거 2, 3 출력
+                   // i = 2인 경우 3이고 3과 같음으로 4 출력
+    }
+
+      document.write('<li>4</li>');
+
+                  // 결과 : 1 23 23 23 4 출력됨
+
+  </script>
+
+
+
+</body>
+</html>
