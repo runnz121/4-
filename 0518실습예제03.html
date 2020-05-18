@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset = "utf-8">
+<style>
+
+    #pricecal label {
+      display:inline-block;
+      width : 80px;
+    }
+
+    #pricecal input[type~=text] {
+      width : 200px; height:25px;
+    }
+
+    #calbt {
+      width : 281px; height : 80px; margin-top: 15px;
+      text-align : center;
+      font-size:18px;
+      font-weight:900;
+      background:#f3bb4a;
+      border:1px solid #c4912a; border-radius : 5px; color:#6f5534;
+    }
+
+    #resoltdv1 {
+      width : 281px;
+      height : 200px;
+      border:1px solid gray;
+  }
+
+</style>
+
+</head>
+<body>
+
+  <form name = "pricecal" id="pricecal">
+    <p>
+      <label for = "price"> 시급:</label>
+      <input type = "text" id="price"></p>
+
+    <p>
+      <label for = "wday">일한날짜:</label>
+      <input type = "text" id="wday"></p>
+
+    <p>
+      <label for = "wtime">일한시간:</label>
+      <input type = "text" id="wtime"></p>
+
+    <p>
+      <label for = "rtime">휴게시간:</label>
+      <input type = "text" id="rtime"></p>
+
+    <p>
+      <button onclick="cal();return false;" id="calbt">계산하기</button>
+    </p>
+    <div id="resoltdv1"></dvi>
+
+
+<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+<script type = "text/javascript">
+
+  function cal() {
+      var price = $("#price").val();
+      var wday = $("#wday").val();
+      var wtime = $("#wtime").val();
+      var rtime = $("#rtime").val();
+
+  var resoltdv2;
+      var allprice = price*wtime; //총급여
+      var goprice = allprice*0.0065;//고용보험
+      var sorprice = allprice*0.1;//수습
+      var huprice = rtime*price;//휴게시간
+      resoltdv2 = "총급여 : " + allprice + "<br>";
+      resoltdv2 += "고용보험 : " + goprice + "<br>";
+      resoltdv2 += "수습시간 : " + sorprice + "<br>";
+      resoltdv2 += "휴계시간 : " + huprice + "<br>";
+      $("#resoltdv1").html(resoltdv2);
+  }
+
+
+
+
+</script>
+</body>
+</html>
