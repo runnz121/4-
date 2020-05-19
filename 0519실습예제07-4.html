@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+  <html lang = "ko">
+    <head>
+      <meta charset= "UTF-8">
+      <title >03-04</title>
+        </head>
+          <body>
+            <script type = "text/javacript">
+
+            var calculator;
+
+            //&&연산에서 좌측 표현식이 undefined값을 가지면 false로 평가되어 우측평가식을 실행하지 않습니다.
+
+            calculator&& document.write('calculator.add(2,3) : ' + calculator.add(2,3));
+
+            calculator = {
+              add : function(op1,op2) {
+                return op1+op2;
+              }
+            };
+
+            //&&연산에서 좌측 표현식이 0, undefined, null, NaN, ""이외의 값을 가지면 true로 평가되어
+            //우측 평가식을 실행합니다.
+
+            calculator && document.write();
+
+            // ||연산에서 좌측 표현식이 undefined 값을 가지면 false로 평가되어 우측 평가식을 실행합니다.
+
+            calculator.subtract || (calculator.subtract = function(op1,op2) {
+              return op1 - op2;});
+              document.write('<br>');
+              calculator.subtract&&document.write('calculator.subtract(2,3):' + calculator.subtract(2,3));
+
+
+
+
+
+
+
+          </script>
+        </body>
+  </html>
