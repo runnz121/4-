@@ -1,157 +1,19 @@
---¥‹¿ß¥Á∫Øµøø¯∞° = (√÷∞Ì∆«∏≈∑Æ¿«ø¯∞° - √÷¿˙∆«∏≈∑Æ¿« ø¯∞°) / (√÷∞Ì∆«∏≈∑Æ - √÷¿˙∆«∏≈∑Æ)
---∞Ì¡§ø¯∞° = √÷∞Ì∆«∏≈∑Æø¯∞° -(¥‹¿ß¥Á∫Øµøø¯∞°*√÷∞Ì∆«∏≈∑Æ)
 
 
--- 1¥‹∞Ë : ø˘∫∞/¡¶«∞∫∞ ∆«∏≈∑Æ∞˙ √—ø¯∞° ∫–∏Æ
--- 2¥‹∞Ë : 1¥‹∞Ë∏¶ ¿ÃøÎ«œø© ø©∑Øø˘¿« DATA¡ﬂ √÷º“ ∆«∏≈∑Æ∞˙ √÷¥Î∆«∏≈∑Æ¿« DATA∏¶ ¡¶«∞∫∞∑Œ √£±‚
---         (¿œ≥‚ƒ°∏¶ ¡¶«∞∫∞∑Œ GROUP BY «œ∞Ì ±◊ ¡ﬂø° MIN ∞˙ MAX∞™¿ª ∞°¡Æø¬¥Ÿ)
---          1≥‚ ¡ﬂ √÷º“ ∆«∏≈∑Æ √÷º“∆«∏≈∑Æ¿« √—ø¯∞°, 1≥‚ ¡ﬂ √÷¥Î ∆«∏≈∑Æ, √÷¥Î∆«∏≈∑Æ √—ø¯∞°
-
--- 3¥‹∞Ë : 2¥‹∞Ë ¡§∫∏∏¶ ¥‹¿ß¥Á ∫Øµø ø¯∞°øÕ ∞Ì¡§ø¯∞° ±∏«œ¥¬ Ωƒø° ¥Î¿‘
---*¡÷¿« : √÷º“(√÷∞Ì) ∆«∏≈∑Æ¿« æÁ∞˙ «ÿ¥Áø˘¿« √—ø¯∞°¥¬ max, min ¿˚øÎΩ√ ∫ŸæÓ ¥Ÿ≥‡æﬂ µ»¥Ÿ.
-
---¥‹¿ß¥Á ∫Øµøø¯∞°
---√÷∞Ì∆«∏≈∑Æ ø¯∞° = √÷∞Ì∆«∏≈∑Æ/∏≈√‚ºˆ∑Æ
-
-
-
---1¥‹∞Ë
-
-SELECT 
-    YYMM_YM,ITEM_CD,
-    SUM(DECODE(BUDGET_CD,62099011,PROD_AM)) ∏≈√‚ºˆ∑Æ,
-    SUM(DECODE(BUDGET_CD,62099101,PROD_AM)) √—ø¯∞° 
-    
-FROM TEST17
-GROUP BY YYMM_YM,ITEM_CD
-;
-
-
-
--- 2¥‹∞Ë : 1¥‹∞Ë∏¶ ¿ÃøÎ«œø© ø©∑Øø˘¿« DATA¡ﬂ √÷º“ ∆«∏≈∑Æ∞˙ √÷¥Î∆«∏≈∑Æ¿« DATA∏¶ ¡¶«∞∫∞∑Œ √£±‚
---         (¿œ≥‚ƒ°∏¶ ¡¶«∞∫∞∑Œ GROUP BY «œ∞Ì ±◊ ¡ﬂø° MIN ∞˙ MAX∞™¿ª ∞°¡Æø¬¥Ÿ)
---          1≥‚ ¡ﬂ √÷º“ ∆«∏≈∑Æ √÷º“∆«∏≈∑Æ¿« √—ø¯∞°, 1≥‚ ¡ﬂ √÷¥Î ∆«∏≈∑Æ, √÷¥Î∆«∏≈∑Æ √—ø¯∞°
-
-
-SELECT 
-    ITEM_CD,
-    ROUND(MAX(DECODE(BUDGET_CD,'62099011',PROD_AM))) √÷¥Î∆«∏≈∑ÆΩ√_æ∆¿Ã≈€∆«∏≈∞πºˆ,
-    ROUND(MAX(DECODE(BUDGET_CD,'62099101',PROD_AM))) √÷¥Î∆«∏≈∑Æ_√—∆»∏∞æ∆¿Ã≈∆∏≈√‚æ◊,
-    ROUND(MIN(DECODE(BUDGET_CD,'62099011',PROD_AM))) √÷º“∆«∏≈∑Æ_æ∆¿Ã≈€∆«∏≈∞πºˆ,
-    ROUND(MIN(DECODE(BUDGET_CD,'62099101',PROD_AM))) √÷º“∆«∏≈∑Æ_√—∆»∏∞æ∆¿Ã≈∆∏≈√‚æ◊
-    
-FROM TEST17
-GROUP BY ITEM_CD;
-
-
--- 3¥‹∞Ë : 2¥‹∞Ë ¡§∫∏∏¶ ¥‹¿ß¥Á ∫Øµø ø¯∞°øÕ ∞Ì¡§ø¯∞° ±∏«œ¥¬ Ωƒø° ¥Î¿‘
---*¡÷¿« : √÷º“(√÷∞Ì) ∆«∏≈∑Æ¿« æÁ∞˙ «ÿ¥Áø˘¿« √—ø¯∞°¥¬ max, min ¿˚øÎΩ√ ∫ŸæÓ ¥Ÿ≥‡æﬂ µ»¥Ÿ.
-
---¥‹¿ß¥Á∫Øµøø¯∞° = (√÷∞Ì∆«∏≈∑Æ¿«ø¯∞° - √÷¿˙∆«∏≈∑Æ¿« ø¯∞°) / (√÷∞Ì∆«∏≈∑Æ - √÷¿˙∆«∏≈∑Æ)
---∞Ì¡§ø¯∞° = √÷∞Ì∆«∏≈∑Æø¯∞° -(¥‹¿ß¥Á∫Øµøø¯∞°*√÷∞Ì∆«∏≈∑Æ)
---√÷∞Ì∆«∏≈∑Æ ø¯∞° = √÷∞Ì∆«∏≈∑Æ/∏≈√‚ºˆ∑Æ
-
-
---2¥‹∞Ë
-SELECT ITEM_CD,   
-         MIN(Q) AS Q1,
-         MAX(Q) AS Q2,
-        (MIN(Q + C/10000000000) - MIN(Q))*10000000000 AS C1,      
-        (MAX(Q + C/10000000000) - MAX(Q))*10000000000 AS C2
-FROM (
-    SELECT YYMM_YM,
-            ITEM_CD,
-            ROUND(SUM(DECODE(BUDGET_CD,'62099011',PROD_AM))) Q,
-            ROUND(SUM(DECODE(BUDGET_CD,'62099101',PROD_AM))) C
-            FROM TEST17
-            WHERE YYMM_YM >= TO_CHAR(TO_NUMBER(SUBSTR('199803',1,4))-1)
-                ||SUBSTR('199803',5,2)
-            AND YYMM_YM < '199803'
-            GROUP BY 
-                YYMM_YM,
-                ITEM_CD
-            )
-            GROUP BY
-                ITEM_CD;
-             
---3¥‹∞Ë
-SELECT ITEM_CD AS ¡¶«∞,
-    DECODE(Q2,Q1,NULL,ROUND(C2 - C1)/(Q2-Q1)) AS ¥‹¿ß¥Á∫Øµøø¯∞°,
-    DECODE(Q2,Q1,NULL,ROUND(C2-((C2-C1)/(Q2-Q1))*Q2)) AS ∞Ì¡§ø¯∞°
-
-FROM(SELECT ITEM_CD, 
-        MIN(Q) AS Q1,
-        MAX(Q) AS Q2,
-        (MIN(Q + C/10000000000) - MIN(Q))*10000000000 AS C1,      
-        (MAX(Q + C/10000000000) - MAX(Q))*10000000000 AS C2
-FROM (
-    SELECT YYMM_YM,
-            ITEM_CD,
-            ROUND(SUM(DECODE(BUDGET_CD,'62099011',PROD_AM))) Q,
-            ROUND(SUM(DECODE(BUDGET_CD,'62099101',PROD_AM))) C
-            FROM TEST17
-            WHERE YYMM_YM >= TO_CHAR(TO_NUMBER(SUBSTR('199803',1,4))-1)
-                ||SUBSTR('199803',5,2)
-            AND YYMM_YM < '199803'
-            GROUP BY 
-                YYMM_YM,
-                ITEM_CD
-            )
-            GROUP BY
-                ITEM_CD
-                )
-               ;
-               
-     -- ∞˙¡¶1
-
-SET SERVEROUTPUT ON;
-CREATE OR REPLACE FUNCTION my_friend(p_emp_id NUMBER)
-RETURN NUMBER IS
-    p_birth_date DATE;
-    f_emp_id NUMBER;
-BEGIN
-    -- ∏≈∞≥∫Øºˆ∑Œ ¡÷æÓ¡¯ ªÁπ¯¿« ª˝¿œ¿ª p_birth_dateø° ¿‘∑¬
-    SELECT  BIRTH_DATE
-    INTO    p_birth_date
-    FROM    TEMP
-    WHERE   EMP_ID = p_emp_id;
-    
-    -
-
-
-
-
-
-- p_birth_date∫∏¥Ÿ ª˝¿œ¿Ã ∫¸∏• ªÁ∂˜¿ª ≥ª∏≤¬˜º¯¿∏∑Œ ¡§∑ƒ, 1π¯¬∞ ªÁ∂˜(my_friend)¿« ªÁπ¯¿ª f_emp_idø° ¿‘∑¬
-SELECT  EMP_ID
-    INTO    f_emp_id
-    FROM    (SELECT ROWNUM NO, EMP_ID FROM TEMP WHERE BIRTH_DATE < p_birth_date ORDER BY BIRTH_DATE DESC)
-    WHERE   ROWNUM = 1;
-    
-    -- f_emp_id∏¶ ∏Æ≈œ
-    RETURN  f_emp_id;
-EXCEPTION
-    WHEN NO_DATA_FOUND THEN
-    RETURN -1;
-    WHEN OTHERS THEN
-    RAISE;
-END;
-                   
-
-1.	ª˝≥‚∫∞ ¿Œø¯ºˆ, SALARY ∆Ú±’, √÷∞Ì SALARY, √÷¿˙ SALARY, SALARY √—«’, ∫–ªÍ, «•¡ÿ∆Ì¬˜
+1.	ÏÉùÎÖÑÎ≥Ñ Ïù∏ÏõêÏàò, SALARY ÌèâÍ∑†, ÏµúÍ≥† SALARY, ÏµúÏ†Ä SALARY, SALARY Ï¥ùÌï©, Î∂ÑÏÇ∞, ÌëúÏ§ÄÌé∏Ï∞®
 
 SELECT TO_CHAR(BIRTH_DATE,'YYYY'), COUNT(TO_CHAR(BIRTH_DATE,'YYYY')), AVG(SALARY), MIN(SALARY), SUM(SALARY), VARIANCE(SALARY), ROUND(STDDEV(SALARY),1)
 FROM TEMP
 GROUP BY TO_CHAR(BIRTH_DATE,'YYYY');
 
-2.	1π¯¿« ∞·∞˙ ¡ﬂ SALARY ∆Ú±’¿Ã 5√µ∏∏ø¯ ¿ÃªÛ¿Ã ∞«∏∏ ¡∂»∏«œ±‚
+2.	1Î≤àÏùò Í≤∞Í≥º Ï§ë SALARY ÌèâÍ∑†Ïù¥ 5Ï≤úÎßåÏõê Ïù¥ÏÉÅÏù¥ Í±¥Îßå Ï°∞ÌöåÌïòÍ∏∞
 
 SELECT TO_CHAR(BIRTH_DATE,'YYYY'), COUNT(TO_CHAR(BIRTH_DATE,'YYYY')), AVG(SALARY), MIN(SALARY), SUM(SALARY), VARIANCE(SALARY), ROUND(STDDEV(SALARY),1)
 FROM TEMP
 GROUP BY TO_CHAR(BIRTH_DATE,'YYYY')
 HAVING AVG(SALARY) >50000000;
 
-3.	ª˝≥‚∫∞ ¿Œø¯ºˆ, SALARY ∆Ú±’, SALARY √—«’/¿Œø¯ºˆ ? ∞·∞˙∞¸¬˚  ∏∂¡ˆ∏∑ µŒ ƒ√∑≥¿Ã ∞∞¿∫¡ˆ
+3.	ÏÉùÎÖÑÎ≥Ñ Ïù∏ÏõêÏàò, SALARY ÌèâÍ∑†, SALARY Ï¥ùÌï©/Ïù∏ÏõêÏàò ? Í≤∞Í≥ºÍ¥ÄÏ∞∞  ÎßàÏßÄÎßâ Îëê Ïª¨ÎüºÏù¥ Í∞ôÏùÄÏßÄ
 
 SELECT TO_CHAR(BIRTH_DATE,'YYYY'), COUNT(TO_CHAR(BIRTH_DATE,'YYYY')), ROUND(AVG(SALARY),1),  ROUND(SUM(SALARY)/COUNT(TO_CHAR(BIRTH_DATE,'YYYY')),1)
 FROM TEMP
@@ -160,10 +22,10 @@ HAVING AVG(SALARY) >50000000;
 
 4.   UPDATE TEMP
      SET      SALARY = NULL
-     WHERE EMP_NAME = '»´±Êµø';
-5.   3π¯ ¥ŸΩ√ Ω««‡ »ƒ ∞·∞˙ ∞¸¬˚
+     WHERE EMP_NAME = 'ÌôçÍ∏∏Îèô';
+5.   3Î≤à Îã§Ïãú Ïã§Ìñâ ÌõÑ Í≤∞Í≥º Í¥ÄÏ∞∞
 6.     ROLLBACK;
-7. ª˝≥‚,√ÎπÃ ∫∞ GROUP BY ¿˚øÎ«ÿ ¿Œø¯ºˆ, ∆Ú±’ SALARY ∞°¡Æø¿±‚
+7. ÏÉùÎÖÑ,Ï∑®ÎØ∏ Î≥Ñ GROUP BY Ï†ÅÏö©Ìï¥ Ïù∏ÏõêÏàò, ÌèâÍ∑† SALARY Í∞ÄÏ†∏Ïò§Í∏∞
 
 SELECT TO_CHAR(BIRTH_DATE,'YYYY'), COUNT(BIRTH_DATE), AVG(SALARY)
 FROM TEMP
@@ -176,7 +38,7 @@ FROM TEMP
 GROUP BY HOBBY
 HAVING HOBBY IS NOT NULL;
 
-8. HOBBY∫∞ ∆Ú±’ SALARY
+8. HOBBYÎ≥Ñ ÌèâÍ∑† SALARY
 
 SELECT HOBBY,COUNT(HOBBY),
 ROUND(AVG(SALARY),1)
@@ -184,7 +46,7 @@ FROM TEMP
 GROUP BY HOBBY
 HAVING HOBBY IS NOT NULL;
 
-9. 8π¯ ∆Ú±’ SALARY¿« √÷º“ ∞™
+9. 8Î≤à ÌèâÍ∑† SALARYÏùò ÏµúÏÜå Í∞í
 
 
 
@@ -194,39 +56,39 @@ HAVING HOBBY IS NOT NULL;
 
 
 
-10. ∆Ø¡§ ªÁπ¯ P_EMP_ID, ¡∂»∏¡∂∞« P_CONDITION  µŒ ∏≈∞≥∫Øºˆ∏¶ πﬁæ∆ 
-   P_CONDITION  ¿Ã 1 ¿Ã∏È «ÿ¥Á ªÁπ¯¿Ã º”«— ∫Œº≠¿« ∆Ú±’ ±ﬁø©∏¶ ∏Æ≈œ«ÿ¡÷∞Ì
-   P_CONDITION  ¿Ã 2 ¿Ã∏È «ÿ¥Á ªÁπ¯∞˙ ∞∞¿∫ ¡˜±ﬁ¿« ±ﬁø© ∆Ú±’¿ª ∏Æ≈œ«ÿ¡÷¥¬ «‘ºˆ AVG_BY_CASE ¿€º∫ 
+10. ÌäπÏ†ï ÏÇ¨Î≤à P_EMP_ID, Ï°∞ÌöåÏ°∞Í±¥ P_CONDITION  Îëê Îß§Í∞úÎ≥ÄÏàòÎ•º Î∞õÏïÑ 
+   P_CONDITION  Ïù¥ 1 Ïù¥Î©¥ Ìï¥Îãπ ÏÇ¨Î≤àÏù¥ ÏÜçÌïú Î∂ÄÏÑúÏùò ÌèâÍ∑† Í∏âÏó¨Î•º Î¶¨ÌÑ¥Ìï¥Ï£ºÍ≥†
+   P_CONDITION  Ïù¥ 2 Ïù¥Î©¥ Ìï¥Îãπ ÏÇ¨Î≤àÍ≥º Í∞ôÏùÄ ÏßÅÍ∏âÏùò Í∏âÏó¨ ÌèâÍ∑†ÏùÑ Î¶¨ÌÑ¥Ìï¥Ï£ºÎäî Ìï®Ïàò AVG_BY_CASE ÏûëÏÑ± 
 
 CREATE OR REPLACE FUNCTION SEARCH1(P_EMP_ID NUMBER, P_CONDITION NUMBER) RETURN NUMBER IS
-P_LEV VARCHAR2(10); -- ¡˜±ﬁ ø¨∫¿ ∆Ú±’¿ª ±∏«œ±‚ ¿ß«— ∫Øºˆ ¡ˆ¡§ 
-P_DEPT_CODE VARCHAR2(10); -- ∫Œº≠ ø¨∫¿ ∆Ú±’¿ª ±∏«œ±‚ ¿ß«— ∫Øºˆ ¡ˆ¡§
-P_SAL TEMP.SALARY%TYPE; --∫Øºˆ ≈◊¿Ã∫Ì∏Ì.ƒ√∑≥%TYPE : «ÿ¥Á ≈◊¿Ã∫Ì¿« ƒ√∑≥∞˙ ∞∞¿∫ ¿Ø«¸
+P_LEV VARCHAR2(10); -- ÏßÅÍ∏â Ïó∞Î¥â ÌèâÍ∑†ÏùÑ Íµ¨ÌïòÍ∏∞ ÏúÑÌïú Î≥ÄÏàò ÏßÄÏ†ï 
+P_DEPT_CODE VARCHAR2(10); -- Î∂ÄÏÑú Ïó∞Î¥â ÌèâÍ∑†ÏùÑ Íµ¨ÌïòÍ∏∞ ÏúÑÌïú Î≥ÄÏàò ÏßÄÏ†ï
+P_SAL TEMP.SALARY%TYPE; --Î≥ÄÏàò ÌÖåÏù¥Î∏îÎ™Ö.Ïª¨Îüº%TYPE : Ìï¥Îãπ ÌÖåÏù¥Î∏îÏùò Ïª¨ÎüºÍ≥º Í∞ôÏùÄ Ïú†Ìòï
 
 BEGIN
-     --¡÷æÓ¡¯ ∏≈∞≥∫Øºˆ∏¶ ∫Œº≠ø¨∫¿, ¡˜±ﬁ ø¨∫¿ ∫Øºˆø° ¥Î¿‘
-    SELECT DEPT_CODE, LEV -- SELECT N∞≥ º±≈√Ω√
-    INTO P_DEPT_CODE, P_LEV --∫Øºˆµµ N∞≥ µÈæÓøÕæﬂµ»¥Ÿ.
+     --Ï£ºÏñ¥ÏßÑ Îß§Í∞úÎ≥ÄÏàòÎ•º Î∂ÄÏÑúÏó∞Î¥â, ÏßÅÍ∏â Ïó∞Î¥â Î≥ÄÏàòÏóê ÎåÄÏûÖ
+    SELECT DEPT_CODE, LEV -- SELECT NÍ∞ú ÏÑ†ÌÉùÏãú
+    INTO P_DEPT_CODE, P_LEV --Î≥ÄÏàòÎèÑ NÍ∞ú Îì§Ïñ¥ÏôÄÏïºÎêúÎã§.
     FROM TEMP
     WHERE EMP_ID = P_EMP_ID;
- --¡÷æÓ¡¯ ∏≈∞≥∫Øºˆ∞° P_DEPT_SAL,P_LEV_SALø° ¥Î¿‘µ  
- --¡÷æÓ¡¯ ∏≈∞≥∫Øºˆ(P_EMP_ID∞™¿ª EMP_ID ƒ√∑≥ø°º≠ √£æ∆º≠ «ÿ¥Á ROW¿« ƒ√∑≥∞™(DEPT_CODE, LEV)ø°º≠ ¡∂»∏«œø© P_DEPT_CODE, P_LEV ∫Øºˆø° ∞¢∞¢ ≥÷¥¬¥Ÿ
- --P_DEPT_SAL ¿∫ DEPT_CODE ƒ√∑≥ø°º≠, P_LEV_SAL ¿∫ LEV ƒ√∑≥∞™¿ª ∞°¡Æø¬¥Ÿ
+ --Ï£ºÏñ¥ÏßÑ Îß§Í∞úÎ≥ÄÏàòÍ∞Ä P_DEPT_SAL,P_LEV_SALÏóê ÎåÄÏûÖÎê® 
+ --Ï£ºÏñ¥ÏßÑ Îß§Í∞úÎ≥ÄÏàò(P_EMP_IDÍ∞íÏùÑ EMP_ID Ïª¨ÎüºÏóêÏÑú Ï∞æÏïÑÏÑú Ìï¥Îãπ ROWÏùò Ïª¨ÎüºÍ∞í(DEPT_CODE, LEV)ÏóêÏÑú Ï°∞ÌöåÌïòÏó¨ P_DEPT_CODE, P_LEV Î≥ÄÏàòÏóê Í∞ÅÍ∞Å ÎÑ£ÎäîÎã§
+ --P_DEPT_SAL ÏùÄ DEPT_CODE Ïª¨ÎüºÏóêÏÑú, P_LEV_SAL ÏùÄ LEV Ïª¨ÎüºÍ∞íÏùÑ Í∞ÄÏ†∏Ïò®Îã§
  
  
  
      
---∏≈∞≥∫Øºˆ∑Œ ¡÷æÓ¡¯ CONDITION ¿« ∞ÊøÏ∞°1,2¿Œ ∞ÊøÏ
-    SELECT AVG(SALARY) -- SELECT ø° ƒ√∑≥¿Ã ø√ « ø‰ æ¯¿Ω æ÷√ ø° ∆Ú±’¿« ¡∂∞«∞™¿ª ø©±‚ø° ¿˚æÓ¡ÿ¥Ÿ.
+--Îß§Í∞úÎ≥ÄÏàòÎ°ú Ï£ºÏñ¥ÏßÑ CONDITION Ïùò Í≤ΩÏö∞Í∞Ä1,2Ïù∏ Í≤ΩÏö∞
+    SELECT AVG(SALARY) -- SELECT Ïóê Ïª¨ÎüºÏù¥ Ïò¨ ÌïÑÏöî ÏóÜÏùå Ïï†Ï¥àÏóê ÌèâÍ∑†Ïùò Ï°∞Í±¥Í∞íÏùÑ Ïó¨Í∏∞Ïóê Ï†ÅÏñ¥Ï§ÄÎã§.
     INTO P_SAL
     FROM TEMP
     WHERE DECODE(P_CONDITION,1,P_DEPT_CODE,2,P_LEV)=DECODE(P_CONDITION,1,DEPT_CODE,2,LEV);
     
--- WHERE¿∫ ø¨ªÍ¿⁄∞° øÕæﬂµ»¥Ÿ.
--- IF OR ø¨ªÍ¿⁄∞° ø√∂ß
--- P_CONDITION ¿Ã 1 ¿Œ ∞ÊøÏ P_DEPT_CODE∞° √‚∑¬, 2¿Œ ∞ÊøÏ P_LEV∏¶ √‚∑¬) = P_CONDITION ¿Ã 1 ¿Œ ∞ÊøÏ DEPT_CODEƒ√∑≥ø°º≠ ∞∞¿∫ ∞™¿∏∑Œ ƒ°∫Œ
--- 2¿Œ ∞ÊøÏ LEV ƒ√∑≥ø°º≠ ∞∞¿∫ ∞™¿∏∑Œ ƒ°∫Œ«—¥Ÿ
--- ¡Ô P_DEPT_CODE = DEPT_CODE, P_LEV = LEV ∂Û¥¬ ¡∂∞«¿ª ∞…æÓ¡÷¥¬∞≈¿” æ∆∑° ¡÷ºÆπÆ ¬¸∞Ì
+-- WHEREÏùÄ Ïó∞ÏÇ∞ÏûêÍ∞Ä ÏôÄÏïºÎêúÎã§.
+-- IF OR Ïó∞ÏÇ∞ÏûêÍ∞Ä Ïò¨Îïå
+-- P_CONDITION Ïù¥ 1 Ïù∏ Í≤ΩÏö∞ P_DEPT_CODEÍ∞Ä Ï∂úÎ†•, 2Ïù∏ Í≤ΩÏö∞ P_LEVÎ•º Ï∂úÎ†•) = P_CONDITION Ïù¥ 1 Ïù∏ Í≤ΩÏö∞ DEPT_CODEÏª¨ÎüºÏóêÏÑú Í∞ôÏùÄ Í∞íÏúºÎ°ú ÏπòÎ∂Ä
+-- 2Ïù∏ Í≤ΩÏö∞ LEV Ïª¨ÎüºÏóêÏÑú Í∞ôÏùÄ Í∞íÏúºÎ°ú ÏπòÎ∂ÄÌïúÎã§
+-- Ï¶â P_DEPT_CODE = DEPT_CODE, P_LEV = LEV ÎùºÎäî Ï°∞Í±¥ÏùÑ Í±∏Ïñ¥Ï£ºÎäîÍ±∞ÏûÑ ÏïÑÎûò Ï£ºÏÑùÎ¨∏ Ï∞∏Í≥†
     
     
  
@@ -244,7 +106,7 @@ BEGIN
 
 
 
-RETURN --∞™¿ª RETURN P_SAL ¿ª ∏Æ≈œ
+RETURN --Í∞íÏùÑ RETURN P_SAL ÏùÑ Î¶¨ÌÑ¥
     
 P_SAL;
 
@@ -259,12 +121,12 @@ END;
 
 
 
-11. 10π¯¿ª ∞À¡ı«“ ºˆ ¿÷¥¬ SQL ¿€º∫ »ƒ ∞À¡ı
+11. 10Î≤àÏùÑ Í≤ÄÏ¶ùÌï† Ïàò ÏûàÎäî SQL ÏûëÏÑ± ÌõÑ Í≤ÄÏ¶ù
 
 SELECT SEARCH1(20050404,1) FROM DUAL;
 SELECT SEARCH1(20050404,2) FROM DUAL;
 
-12. ª˝≥‚∫∞ √÷∞Ì SALARY, MAX(ID) ∏¶ ¿–æÓ ø¿±‚ 
+12. ÏÉùÎÖÑÎ≥Ñ ÏµúÍ≥† SALARY, MAX(ID) Î•º ÏùΩÏñ¥ Ïò§Í∏∞ 
 SELECT TO_CHAR(BIRTH_DATE,'YYYY'),         
         MAX(SALARY+(EMP_ID/100000000)) MAXX,
         SUBSTR(MAX(SALARY+(EMP_ID/100000000)),-8) MAXX_ID,
@@ -273,16 +135,16 @@ SELECT TO_CHAR(BIRTH_DATE,'YYYY'),
          GROUP BY TO_CHAR(BIRTH_DATE,'YYYY'
         HAVING SUBSTR(MAX(SALARY+(EMP_ID/100000000)),10) > 0;
 
-13. 12π¯ ∞·∞˙∞° ≈◊¿Ã∫Ìø°º≠ ∞∞¿∫ ∑πƒ⁄µÂ¿Œ¡ˆ æ∆¥—¡ˆ CHECK«œ±‚
+13. 12Î≤à Í≤∞Í≥ºÍ∞Ä ÌÖåÏù¥Î∏îÏóêÏÑú Í∞ôÏùÄ Î†àÏΩîÎìúÏù∏ÏßÄ ÏïÑÎãåÏßÄ CHECKÌïòÍ∏∞
 
 
-14  12π¯ µ⁄ø° SALARYøÕ EMP_ID ø¨∞·«ÿº≠ MAX∞™ ±∏«œ±‚ 
+14  12Î≤à Îí§Ïóê SALARYÏôÄ EMP_ID Ïó∞Í≤∞Ìï¥ÏÑú MAXÍ∞í Íµ¨ÌïòÍ∏∞ 
 
 SELECT TO_CHAR(BIRTH_DATE,'YYYY'),         
         MAX(SALARY+(EMP_ID/100000000)) MAXX,
         SUBSTR(MAX(SALARY+(EMP_ID/100000000)),-8) MAXX_ID,
         SUBSTR(MAX(SALARY+(EMP_ID/100000000)),1,8) MAXX_SAL,
-        TO_CHAR('ªÁπ¯'||':'||SUBSTR(MAX(SALARY+(EMP_ID/100000000)),-8)) || 'ø¨∫¿'||':'||SUBSTR(MAX(SALARY+(EMP_ID/100000000)),1,8) MAXXX
+        TO_CHAR('ÏÇ¨Î≤à'||':'||SUBSTR(MAX(SALARY+(EMP_ID/100000000)),-8)) || 'Ïó∞Î¥â'||':'||SUBSTR(MAX(SALARY+(EMP_ID/100000000)),1,8) MAXXX
         FROM TEMP
         
         GROUP BY TO_CHAR(BIRTH_DATE,'YYYY')
@@ -292,8 +154,8 @@ SELECT TO_CHAR(BIRTH_DATE,'YYYY'),
 
 
 
-15. ª˝≥‚∫∞ √÷∞Ì SALARY ID, √÷∞Ì±›æ◊, √÷¿˙SALARY ID, √÷¿˙±›æ◊ ∞°¡Æø¿±‚
-   (SUB QUERY æ¯¿Ã INLINE VIEW∏¶ ªÁøÎ«œµ« TEMP TABLE ACCESS¥¬ «— π¯∏∏ ∞°¥…)
+15. ÏÉùÎÖÑÎ≥Ñ ÏµúÍ≥† SALARY ID, ÏµúÍ≥†Í∏àÏï°, ÏµúÏ†ÄSALARY ID, ÏµúÏ†ÄÍ∏àÏï° Í∞ÄÏ†∏Ïò§Í∏∞
+   (SUB QUERY ÏóÜÏù¥ INLINE VIEWÎ•º ÏÇ¨Ïö©ÌïòÎêò TEMP TABLE ACCESSÎäî Ìïú Î≤àÎßå Í∞ÄÎä•)
 
 SELECT TO_CHAR(BIRTH_DATE,'YYYY'),         
        
@@ -307,142 +169,142 @@ SELECT TO_CHAR(BIRTH_DATE,'YYYY'),
         GROUP BY TO_CHAR(BIRTH_DATE,'YYYY')
         HAVING SUBSTR(MAX(SALARY+(EMP_ID/100000000)),8) > 0;
 
-         1. DBA_TABLESø°º≠ ≈◊¿Ã∫Ì∏Ì¿Ã º“πÆ¿⁄∑Œ µ» ≈◊¿Ã∫Ì √£±‚ 
-2. DBA_OBJECTSø°º≠ NAMEø° º“πÆ¿⁄∞° ∆˜«‘µ» ≈◊¿Ã∫Ì √£±‚ 
-3. ªÁπ¯∞˙ ∫Œº≠ƒ⁄µÂ∏¶ ∞°¡Æø¿µ« ∫Œº≠ƒ⁄µÂ¥¬ √π π¯¬∞ ¿⁄∏Æ∏∏ ¥ÎπÆ¿⁄∞° ≥™ø¿µµ∑œ
+         1. DBA_TABLESÏóêÏÑú ÌÖåÏù¥Î∏îÎ™ÖÏù¥ ÏÜåÎ¨∏ÏûêÎ°ú Îêú ÌÖåÏù¥Î∏î Ï∞æÍ∏∞ 
+2. DBA_OBJECTSÏóêÏÑú NAMEÏóê ÏÜåÎ¨∏ÏûêÍ∞Ä Ìè¨Ìï®Îêú ÌÖåÏù¥Î∏î Ï∞æÍ∏∞ 
+3. ÏÇ¨Î≤àÍ≥º Î∂ÄÏÑúÏΩîÎìúÎ•º Í∞ÄÏ†∏Ïò§Îêò Î∂ÄÏÑúÏΩîÎìúÎäî Ï≤´ Î≤àÏß∏ ÏûêÎ¶¨Îßå ÎåÄÎ¨∏ÏûêÍ∞Ä ÎÇòÏò§ÎèÑÎ°ù
 
 SELECT EMP_ID,INITCAP(DEPT_CODE) FROM TEMP;
 
-4. ªÁπ¯∞˙ √ÎπÃ∏¶ ∞°¡Æø¿µ« √ÎπÃ¥¬ øÏ√¯ ¡§∑ƒ 10¿⁄∏Æ∑Œ «•Ω√«œ∞Ì  æ’¿« ∫Û¿⁄∏Æ¥¬ °Æ*°Ø ∑Œ √§øÔ ∞Õ
+4. ÏÇ¨Î≤àÍ≥º Ï∑®ÎØ∏Î•º Í∞ÄÏ†∏Ïò§Îêò Ï∑®ÎØ∏Îäî Ïö∞Ï∏° Ï†ïÎ†¨ 10ÏûêÎ¶¨Î°ú ÌëúÏãúÌïòÍ≥†  ÏïûÏùò ÎπàÏûêÎ¶¨Îäî ‚Äò*‚Äô Î°ú Ï±ÑÏö∏ Í≤É
 
 SELECT EMP_ID,HOBBY, LPAD(HOBBY,10,'*') FROM TEMP;
 
-5. ªÁπ¯∞˙ √ÎπÃ∏¶ ∞°¡Æø¿µ« √ÎπÃ¥¬ ¡¬√¯ ¡§∑ƒ 10¿⁄∏Æ∑Œ «•Ω√«œ∞Ì µ⁄¿« ∫Û¿⁄∏Æ¥¬ °Æ*°Ø ∑Œ √§øÔ ∞Õ
+5. ÏÇ¨Î≤àÍ≥º Ï∑®ÎØ∏Î•º Í∞ÄÏ†∏Ïò§Îêò Ï∑®ÎØ∏Îäî Ï¢åÏ∏° Ï†ïÎ†¨ 10ÏûêÎ¶¨Î°ú ÌëúÏãúÌïòÍ≥† Îí§Ïùò ÎπàÏûêÎ¶¨Îäî ‚Äò*‚Äô Î°ú Ï±ÑÏö∏ Í≤É
 
 SELECT EMP_ID,HOBBY, RPAD(HOBBY,10,'*') FROM TEMP;
 
-6. ªÁπ¯, ∫Œº≠ƒ⁄µÂ æ’¿« µŒ ¿⁄∏Æ ∞°¡Æø¿±‚
+6. ÏÇ¨Î≤à, Î∂ÄÏÑúÏΩîÎìú ÏïûÏùò Îëê ÏûêÎ¶¨ Í∞ÄÏ†∏Ïò§Í∏∞
 
 SELECT EMP_ID,SUBSTR(DEPT_CODE,0,2) FROM TEMP;
 
-7. ªÁπ¯, ∫Œº≠ƒ⁄µÂ º¬¬∞ ¿⁄∏Æ ¿Ã»ƒ ∏µŒ ∞°¡Æø¿±‚
+7. ÏÇ¨Î≤à, Î∂ÄÏÑúÏΩîÎìú ÏÖãÏß∏ ÏûêÎ¶¨ Ïù¥ÌõÑ Î™®Îëê Í∞ÄÏ†∏Ïò§Í∏∞
 
 SELECT EMP_ID,SUBSTR(DEPT_CODE,3) FROM TEMP;
 
-8. ªÁπ¯, ∫Œº≠ƒ⁄µÂ º¬¬∞∫Œ≈Õ 4¿⁄∏Æ ∞°¡Æø¿±‚
+8. ÏÇ¨Î≤à, Î∂ÄÏÑúÏΩîÎìú ÏÖãÏß∏Î∂ÄÌÑ∞ 4ÏûêÎ¶¨ Í∞ÄÏ†∏Ïò§Í∏∞
 
 SELECT EMP_ID,SUBSTR(DEPT_CODE,4) FROM TEMP;
 
-9. ªÁπ¯, ∫Œº≠ƒ⁄µÂ, ∫Œº≠ƒ⁄µÂø° 0¿Ã √÷√ ∑Œ ≥™≈∏≥™¥¬ ¿⁄∏Æ ∞°¡Æø¿±‚
+9. ÏÇ¨Î≤à, Î∂ÄÏÑúÏΩîÎìú, Î∂ÄÏÑúÏΩîÎìúÏóê 0Ïù¥ ÏµúÏ¥àÎ°ú ÎÇòÌÉÄÎÇòÎäî ÏûêÎ¶¨ Í∞ÄÏ†∏Ïò§Í∏∞
 
 
-10. ∫Œº≠ ≈◊¿Ã∫Ìø°º≠ ƒ⁄µÂ, ∏Ìƒ™, ∏Ìƒ™ ¡ﬂ °Æ¡ˆø¯°Ø ¿Ã∂ı ±€¿⁄¥¬ °Æ**°Ø ∑Œ ƒ°»Ø«œø© ∞°¡Æø¿±‚  
+10. Î∂ÄÏÑú ÌÖåÏù¥Î∏îÏóêÏÑú ÏΩîÎìú, Î™ÖÏπ≠, Î™ÖÏπ≠ Ï§ë ‚ÄòÏßÄÏõê‚Äô Ïù¥ÎûÄ Í∏ÄÏûêÎäî ‚Äò**‚Äô Î°ú ÏπòÌôòÌïòÏó¨ Í∞ÄÏ†∏Ïò§Í∏∞  
 
-SELECT DEPT_CODE,DEPT_NAME,REPLACE(DEPT_NAME, '¡ˆø¯', '**') FROM TDEPT;
+SELECT DEPT_CODE,DEPT_NAME,REPLACE(DEPT_NAME, 'ÏßÄÏõê', '**') FROM TDEPT;
 
-11. ASCII ∞™ 89π¯ø° «ÿ¥Áµ«¥¬ πÆ¿⁄¥¬? 
+11. ASCII Í∞í 89Î≤àÏóê Ìï¥ÎãπÎêòÎäî Î¨∏ÏûêÎäî? 
 
 SELECT CHR(89) FROM DUAL;
 
-12. °Æ!°Ø, SPACE, °Ø~°Ø ø° «ÿ¥Á«œ¥¬ ASCII ƒ⁄µÂ ∞™ ¿–æÓø¿±‚
+12. ‚Äò!‚Äô, SPACE, ‚Äô~‚Äô Ïóê Ìï¥ÎãπÌïòÎäî ASCII ÏΩîÎìú Í∞í ÏùΩÏñ¥Ïò§Í∏∞
 
 SELECT ASCII('!') FROM DUAL; 33
 SELECT ASCII(' ') FROM DUAL; 32
 SELECT ASCII('~') FROM DUAL;126
 
-13. ªÁπ¯, SALARY/12 ∏¶ º“ºˆ¡°æ∆∑° µŒ π¯¬∞, 1¿« ¿⁄∏Æ, 100¿« ¿⁄∏Æ∑Œ π›ø√∏≤ «— ∞™ ∞°¡Æø¿±‚
+13. ÏÇ¨Î≤à, SALARY/12 Î•º ÏÜåÏàòÏ†êÏïÑÎûò Îëê Î≤àÏß∏, 1Ïùò ÏûêÎ¶¨, 100Ïùò ÏûêÎ¶¨Î°ú Î∞òÏò¨Î¶º Ìïú Í∞í Í∞ÄÏ†∏Ïò§Í∏∞
 
 SELECT EMP_ID, ROUND(SALARY/12,2),ROUND(SALARY/12,0),ROUND(SALARY/12,-2) FROM TEMP;
 
 
-14. ªÁπ¯, SALARY/12 ∏¶ º“ºˆ¡°æ∆∑° µŒ π¯¬∞, 1¿« ¿⁄∏Æ, 100¿« ¿⁄∏Æ ±Ó¡ˆ ≥≤±‚∞Ì ¿˝ªÁ 
+14. ÏÇ¨Î≤à, SALARY/12 Î•º ÏÜåÏàòÏ†êÏïÑÎûò Îëê Î≤àÏß∏, 1Ïùò ÏûêÎ¶¨, 100Ïùò ÏûêÎ¶¨ ÍπåÏßÄ ÎÇ®Í∏∞Í≥† Ï†àÏÇ¨ 
 
 SELECT EMP_ID, TRUNC(SALARY/12,2),TRUNC(SALARY/12,0),TRUNC(SALARY/12,-2) FROM TEMP;
 
 
-15. ROWπ¯»£, EMP_ID, EMP_NAME, ROW π¯»£∏¶ 3¿∏∑Œ ≥™¥´ ∞™, 
-  3¿∏∑Œ ≥™¥´ ∞™ ∫∏¥Ÿ ≈´ ∞°¿Â ¿€¿∫ ¡§ºˆ, 3¿∏∑Œ ≥™¥´ ∞™∫∏¥Ÿ ¿€¿∫ ∞°¿Â ≈´ ¡§ºˆ∏¶ ∞°¡Æø¿±‚
+15. ROWÎ≤àÌò∏, EMP_ID, EMP_NAME, ROW Î≤àÌò∏Î•º 3ÏúºÎ°ú ÎÇòÎàà Í∞í, 
+  3ÏúºÎ°ú ÎÇòÎàà Í∞í Î≥¥Îã§ ÌÅ∞ Í∞ÄÏû• ÏûëÏùÄ Ï†ïÏàò, 3ÏúºÎ°ú ÎÇòÎàà Í∞íÎ≥¥Îã§ ÏûëÏùÄ Í∞ÄÏû• ÌÅ∞ Ï†ïÏàòÎ•º Í∞ÄÏ†∏Ïò§Í∏∞
 
 SELECT ROWNUM, EMP_ID, ROWNUM/3, ROUND(GREATEST(ROWNUM/3)), ROUND(LEAST(ROWNUM/3)) FROM TEMP;
 
 
-16. 11¿ª ¡¶∞ˆ«— ∞™, 4¡¶∞ˆ«— ∞™, 556¿« ¡¶∞ˆ±Ÿ æÀæ∆≥ª±‚
+16. 11ÏùÑ Ï†úÍ≥±Ìïú Í∞í, 4Ï†úÍ≥±Ìïú Í∞í, 556Ïùò Ï†úÍ≥±Í∑º ÏïåÏïÑÎÇ¥Í∏∞
 
 SELECT POWER(11,2), POWER(4,2), SQRT(556) FROM DUAL;
 
-17. -100, 100¿ª «‘ºˆ µŒ∞≥∏¶ ¡ﬂ√∏¿∏∑Œ ªÁøÎ«œø© ∏µŒ 1∑Œ πŸ≤Ÿ±‚
+17. -100, 100ÏùÑ Ìï®Ïàò ÎëêÍ∞úÎ•º Ï§ëÏ≤©ÏúºÎ°ú ÏÇ¨Ïö©ÌïòÏó¨ Î™®Îëê 1Î°ú Î∞îÍæ∏Í∏∞
 
 SELECT SIGN(ABS(-100)),SIGN(100) FROM DUAL;
 
 
-18. ªÁπ¯, SALARY, SALARY∏¶ √µ∏∏¿∏∑Œ ≥™¥´ ≥™∏”¡ˆ ∞°¡Æø¿±‚
+18. ÏÇ¨Î≤à, SALARY, SALARYÎ•º Ï≤úÎßåÏúºÎ°ú ÎÇòÎàà ÎÇòÎ®∏ÏßÄ Í∞ÄÏ†∏Ïò§Í∏∞
 
 SELECT EMP_ID, SALARY, MOD(SALARY,10000000) FROM TEMP;
 
-19. TEMP ≈◊¿Ã∫Ì¿« ∑πƒ⁄µÂ∏¶ º¯º≠¥Î∑Œ ºº ∞≥æø ∞∞¿∫ π¯»£ ∫Ÿ¿Œ ∞™, ªÁπ¯, º∫∏Ì ∞°¡Æø¿±‚
+19. TEMP ÌÖåÏù¥Î∏îÏùò Î†àÏΩîÎìúÎ•º ÏàúÏÑúÎåÄÎ°ú ÏÑ∏ Í∞úÏî© Í∞ôÏùÄ Î≤àÌò∏ Î∂ôÏù∏ Í∞í, ÏÇ¨Î≤à, ÏÑ±Î™Ö Í∞ÄÏ†∏Ïò§Í∏∞
 
 
 
-20. ªÁπ¯,º∫∏Ì,√‚ª˝¿œ, √‚ª˝¿œø° 55∞≥ø˘ ¥ı«— ≥Ø¬•, √‚ª˝¿œø° 55∞≥ø˘ ª´ ≥Ø¬• ∞°¡Æø¿±‚
+20. ÏÇ¨Î≤à,ÏÑ±Î™Ö,Ï∂úÏÉùÏùº, Ï∂úÏÉùÏùºÏóê 55Í∞úÏõî ÎçîÌïú ÎÇ†Ïßú, Ï∂úÏÉùÏùºÏóê 55Í∞úÏõî Î∫Ä ÎÇ†Ïßú Í∞ÄÏ†∏Ïò§Í∏∞
 
 SELECT EMP_ID, EMP_NAME, BIRTH_DATE, TO_DATE(ADD_MONTHS(BIRTH_DATE,-55),'YYYY-MM-DD')FROM TEMP;
 
 
-21. µπæ∆ø¿¥¬ ¿œø‰¿œ∞˙ ∏Òø‰¿œ ≥Ø¬•∑Œ √£æ∆≥ª±‚
+21. ÎèåÏïÑÏò§Îäî ÏùºÏöîÏùºÍ≥º Î™©ÏöîÏùº ÎÇ†ÏßúÎ°ú Ï∞æÏïÑÎÇ¥Í∏∞
 
-SELECT EMP_ID, EMP_NAME, BIRTH_DATE, NEXT_DAY(BIRTH_DATE, '∏Òø‰¿œ')FROM TEMP;
-SELECT EMP_ID, EMP_NAME, BIRTH_DATE, NEXT_DAY(BIRTH_DATE, '¿œø‰¿œ')FROM TEMP;
+SELECT EMP_ID, EMP_NAME, BIRTH_DATE, NEXT_DAY(BIRTH_DATE, 'Î™©ÏöîÏùº')FROM TEMP;
+SELECT EMP_ID, EMP_NAME, BIRTH_DATE, NEXT_DAY(BIRTH_DATE, 'ÏùºÏöîÏùº')FROM TEMP;
 
-22. EMP_ID,EMP_NAME, √‚ª˝¿œø° «ÿ¥Áµ«¥¬ ≥‚ø˘¿« ∏∂¡ˆ∏∑ ¿œ¿⁄ √£±‚
+22. EMP_ID,EMP_NAME, Ï∂úÏÉùÏùºÏóê Ìï¥ÎãπÎêòÎäî ÎÖÑÏõîÏùò ÎßàÏßÄÎßâ ÏùºÏûê Ï∞æÍ∏∞
 
 SELECT EMP_ID, EMP_NAME, BIRTH_DATE, LAST_DAY(TO_DATE(BIRTH_DATE,'YYYY-MM-DD'))FROM TEMP;
 
-23. «ˆ¿ÁΩ√∞£¿ª  °Æ1980-01-25 00:00:00°Ø, °Æ1980-JAN-25 000000°Ø øÕ ∞∞¿∫ «¸Ωƒ¿« πÆ¿⁄∑Œ ∫∏ø©¡÷±‚
+23. ÌòÑÏû¨ÏãúÍ∞ÑÏùÑ  ‚Äò1980-01-25 00:00:00‚Äô, ‚Äò1980-JAN-25 000000‚Äô ÏôÄ Í∞ôÏùÄ ÌòïÏãùÏùò Î¨∏ÏûêÎ°ú Î≥¥Ïó¨Ï£ºÍ∏∞
 
 SELECT TO_CHAR(SYSDATE,'YYYY-Mon-DD HH24MISS','NLS_DATE_LANGUAGE=ENGLISH') FROM DUAL;
 
-24. EMP_ID, EMP_NAME, SALARY/12, SALARY/12∏¶ º“ºˆ¡° æ∆∑° µŒ ¿⁄∏Æ±Ó¡ˆ ∫∏ø©¡÷±‚  
+24. EMP_ID, EMP_NAME, SALARY/12, SALARY/12Î•º ÏÜåÏàòÏ†ê ÏïÑÎûò Îëê ÏûêÎ¶¨ÍπåÏßÄ Î≥¥Ïó¨Ï£ºÍ∏∞  
 
 SELECT EMP_ID, EMP_NAME, SALARY/12, ROUND(SALARY/12,2) FROM TEMP;
 
-25. EMP_ID, EMP_NAME, HOBBY, HOBBY∞° NULL¿Ã∏È °Æ0°Ø, æ∆¥œ∏È °Æ1°Ø ¿ª √‚∑¬
+25. EMP_ID, EMP_NAME, HOBBY, HOBBYÍ∞Ä NULLÏù¥Î©¥ ‚Äò0‚Äô, ÏïÑÎãàÎ©¥ ‚Äò1‚Äô ÏùÑ Ï∂úÎ†•
 
 SELECT EMP_ID, EMP_NAME, HOBBY, NVL(SIGN(ASCII(HOBBY)),0) FROM TEMP;
 
-26. EMP_ID, EMP_NAME, TEL, HOBBY, EMP_TYPE, TEL ¿÷¿∏∏È TEL, æ¯¿∏∏È HOBBY, ±◊µµ æ¯¿∏∏È EMP_TYPE¿ª ∫∏ø©¡÷±‚       
+26. EMP_ID, EMP_NAME, TEL, HOBBY, EMP_TYPE, TEL ÏûàÏúºÎ©¥ TEL, ÏóÜÏúºÎ©¥ HOBBY, Í∑∏ÎèÑ ÏóÜÏúºÎ©¥ EMP_TYPEÏùÑ Î≥¥Ïó¨Ï£ºÍ∏∞       
            
 
-20. SALARY ∞° 4√µ∏∏ø¯∞˙ 6√µ∏∏ø¯ ªÁ¿Ã¿Œ ¿⁄∑· ∞Àªˆ«œ±‚ (BETWEEN ∞Àªˆ)
+20. SALARY Í∞Ä 4Ï≤úÎßåÏõêÍ≥º 6Ï≤úÎßåÏõê ÏÇ¨Ïù¥Ïù∏ ÏûêÎ£å Í≤ÄÏÉâÌïòÍ∏∞ (BETWEEN Í≤ÄÏÉâ)
 
 SELECT *FROM TEMP WHERE SALARY BETWEEN 40000000 AND 60000000;
 
-21. √ÎπÃ∞° ≥Î∑°,µÓªÍ,πŸµœ ¡ﬂ 1∞°¡ˆ¿Œ ¡˜ø¯ ∞Àªˆ«œ±‚ (IN ∞Àªˆ)
+21. Ï∑®ÎØ∏Í∞Ä ÎÖ∏Îûò,Îì±ÏÇ∞,Î∞îÎëë Ï§ë 1Í∞ÄÏßÄÏù∏ ÏßÅÏõê Í≤ÄÏÉâÌïòÍ∏∞ (IN Í≤ÄÏÉâ)
 
-SELECT *FROM TEMP WHERE REGEXP_LIKE(HOBBY, '≥Î∑°|µÓªÍ|πŸµœ');
+SELECT *FROM TEMP WHERE REGEXP_LIKE(HOBBY, 'ÎÖ∏Îûò|Îì±ÏÇ∞|Î∞îÎëë');
 
-22. º∫¿Ã °Æ¿Ã°Ø ¿Œ ¡˜ø¯ ∞Àªˆ
+22. ÏÑ±Ïù¥ ‚ÄòÏù¥‚Äô Ïù∏ ÏßÅÏõê Í≤ÄÏÉâ
 
-SELECT * FROM TEMP WHERE  EMP_NAME LIKE '%¿Ã_%';
+SELECT * FROM TEMP WHERE  EMP_NAME LIKE '%Ïù¥_%';
 
-23. º∫∏Ìø° °Æ¿Ã°Ø ∂Û¥¬ πÆ¿⁄∞° µÈæÓ∞£ ¡˜ø¯ ∞Àªˆ
+23. ÏÑ±Î™ÖÏóê ‚ÄòÏù¥‚Äô ÎùºÎäî Î¨∏ÏûêÍ∞Ä Îì§Ïñ¥Í∞Ñ ÏßÅÏõê Í≤ÄÏÉâ
 
-SELECT * FROM TEMP WHERE  EMP_NAME LIKE '%¿Ã%';
+SELECT * FROM TEMP WHERE  EMP_NAME LIKE '%Ïù¥%';
 
-24. º∫∏Ì µŒ π¯¬∞ ±€¿⁄∞° °Æ±Ê°Ø ¿Œ ªÁ∂˜ ∞Àªˆ
+24. ÏÑ±Î™Ö Îëê Î≤àÏß∏ Í∏ÄÏûêÍ∞Ä ‚ÄòÍ∏∏‚Äô Ïù∏ ÏÇ¨Îûå Í≤ÄÏÉâ
 
-SELECT * FROM TEMP WHERE  EMP_NAME LIKE '%_±Ê_%';
+SELECT * FROM TEMP WHERE  EMP_NAME LIKE '%_Í∏∏_%';
 
-25. √ÎπÃ∞° NULL ¿Œ ¡˜ø¯ ∞Àªˆ
+25. Ï∑®ÎØ∏Í∞Ä NULL Ïù∏ ÏßÅÏõê Í≤ÄÏÉâ
 
 SELECT * FROM TEMP WHERE HOBBY IS NULL;
 
-26. SALARY ∞° 5√µ∏∏ø¯ ∫∏¥Ÿ ≈´ »´ææ ∞Àªˆ
+26. SALARY Í∞Ä 5Ï≤úÎßåÏõê Î≥¥Îã§ ÌÅ∞ ÌôçÏî® Í≤ÄÏÉâ
 
-SELECT * FROM TEMP WHERE (SALARY >50000000 AND EMP_NAME LIKE'%»´_%');
+SELECT * FROM TEMP WHERE (SALARY >50000000 AND EMP_NAME LIKE'%Ìôç_%');
 
-27. SALARY ∞° 5√µ∏∏ø¯ ∫∏¥Ÿ ≈©∞≈≥™ »´ææ¿Œ ¡˜ø¯ ∞Àªˆ
+27. SALARY Í∞Ä 5Ï≤úÎßåÏõê Î≥¥Îã§ ÌÅ¨Í±∞ÎÇò ÌôçÏî®Ïù∏ ÏßÅÏõê Í≤ÄÏÉâ
 
-SELECT * FROM TEMP WHERE (SALARY >50000000 OR EMP_NAME LIKE'%»´_%');
+SELECT * FROM TEMP WHERE (SALARY >50000000 OR EMP_NAME LIKE'%Ìôç_%');
 
 
     
