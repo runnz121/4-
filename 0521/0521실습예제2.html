@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style type = "text/css">
+    </style>
+  </head>
+  <body>
+      <script src="http://code.jquery.com/jquery-migrate-git.min.js"></script>
+      <script type="text/javascript">
+
+      function plus(a,b){
+        return a+b;
+      };
+
+      plus(5,3);
+
+
+      function user (ids,pws) {
+
+      ids = prompt('아이디를 입력하세요');
+      pws = prompt('비밀번호를 입력하세요');
+
+
+        if (ids == 'kuku' && pws == '11'){
+          alert(ids + ' 님 어서오세요!');
+      } else if(ids == 'kuku' && pws != '11'){
+          alert('비밀번호가 틀렸습니다.');
+      } else if(ids !='kuku' && pws !='11'){
+          alert('없는 사용자입니다')
+      };
+    };
+
+    user();
+
+
+
+
+      </script>
+    </body>
+    </html>

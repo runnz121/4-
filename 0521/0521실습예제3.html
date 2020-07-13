@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style type = "text/css">
+    </style>
+  </head>
+  <body>
+      <script src="http://code.jquery.com/jquery-migrate-git.min.js"></script>
+      <script type="text/javascript">
+
+      number = function(){
+      i=0;
+      while(i<10){
+      document.write(i);
+      i++;
+      }
+      }
+
+
+      (function(){
+        var num = 100;
+
+        function op(){
+          num += 200;
+          alert(num);
+        }
+        op();
+      }());
+
+
+
+
+      (function(){
+        var num = 100;
+
+          function pp(){          
+            alert(num);
+          }
+          pp();
+        }());
+
+
+
+
+
+
+
+
+
+
+
+      </script>
+    </body>
+    </html>

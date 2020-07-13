@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style type = "text/css">
+    </style>
+  </head>
+  <body>
+    <div>
+        <p id= "push">버튼 눌러 시작 </p>
+        <button id="get" onclick="Lotto();">랜덤 번호 생성</button>
+    </div>
+
+
+
+    <script src="http://code.jquery.com/jquery-migrate-git.min.js"></script>
+    <script type="text/javascript">
+
+    function Lotto(){
+
+      var luckynumber = new Array();
+
+      function generate(){
+
+        while(luckynumber.length<6){
+            luckynumber.push(Math.floor(Math.random()*45)+1); //까지는 랜덤으로 숫자 생성
+
+            luckynumber.filter(function a(luckynumber[i]) {return luckynumber[i]}
+          )
+        };
+
+
+
+
+
+        var push1 = document.getElementById("push");
+          push1.innerHTML = luckynumber; // push라는 id를 가져온 요소를 push1이라는 변수로 저장하고 이를 luckynumber로 바꾸는것
+     };
+
+
+
+
+
+    </script>
+
+  </body>
+  </html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang = "ko">
+<head>
+<meta charset= "UTF-8">
+<title ></title>
+</head>
+<body>
+<script>
+
+i = 5;
+j = ++i;
+document.write(i,"<br>");//6
+document.write(j,"<br>");//6  자신을 증가 시킨후 출력하여서 6이 나옴(전치)
+
+i = 5;
+j = i++;
+document.write(i,"<br>");//6  i가 증가되는 것은 똑같음
+document.write(j,"<br>");//5  그러나 j의 경우 j의 출력문이 실행되고 나서 i가 증가됨으로 증가되기전의 i값인 5가 출력됨(후치)
+
+
+
+a = 5;
+b = --a;
+document.write(a,"<br>");//4
+document.write(b,"<br>");//4
+
+a = 5;
+b = a--;
+document.write(a,"<br>");//4
+document.write(b,"<br>");//5 b의 값이 출력되고 나서 -됨 따라서 -되기전의 값인 5가 출력됨
+
+
+
+
+</script>
+</body>
+</html>

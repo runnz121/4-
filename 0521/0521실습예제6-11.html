@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>04-11</title>
+    <style type = "text/css">
+    </style>
+  </head>
+  <body>
+    <script src="http://code.jquery.com/jquery-migrate-git.min.js"></script>
+    <script type="text/javascript">
+    //클로저
+
+    //1. 전역 레벨의 파싱 결과 전역객체에 프로퍼티 makeId의 id가 정의됩니다.
+
+    function makeId() {
+    var lastId = 0;
+
+    return function() {return ++lastId;};//반환시키기 전에 증가
+    }
+
+    //2. 함수레벨의 파싱 결과 makeId() 함수에 대한 호출 객체에 arguments 프로퍼티가 초기화 되고,
+    //프로퍼티 lastId 가 정의되고,
+    //전역객체와 makeId() 함수의 호출객체 간에 스코프 체인이 연결된 후,
+    //makeId() 함수가 실행되고, id는 익명함수를 반환받습니다.
+    var id = makeId();
+
+    //3. 함수 레벨의 파싱 결과 ud 함수에 대한 호출 객체에 arguments 프로퍼티가 초기화되고,
+    //  makeId 함수의 호출 객체와 id함수의 호출 객체 간에 스코프 체인이 연결되고,
+    //  id함수의 코드를 실행합니다.
+    //  이 때 lastId 는 makeId함수의 호출객체에 접근해서
+    //  그 값을 취합니다.
+    document.writeln('id:' + id() +'<br>');
+    document.writeln('id:' + id() +'<br>');
+    document.writeln('id:' + id() +'<br>');
+    document.writeln('id:' + id() +'<br>');
+    document.writeln('id:' + id() +'<br>');
+    document.writeln('<br>');
+
+
+
+    </script>
+
+  </body>
+  </html>

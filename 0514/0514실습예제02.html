@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script>
+
+    function two() {
+    document.write("2-1"+"<br>");
+    document.write("2-2"+"<br>");
+  }
+
+
+document.getElementbyID("tt").onclick = kor;
+
+      function kor() {
+
+        for (i = 0; i<=10; i++){
+        document.write("1-2"+"<br>");
+        two();
+        document.write("1-3"+"<br>");
+        two();
+        document.write("<br>"+"<br>");
+      }
+    }
+
+  </script>
+
+
+</head>
+<body>
+
+  <input id="tt" type = "button" value = "button" onclick="kor()">
+
+
+
+
+
+
+</body>
+</html>

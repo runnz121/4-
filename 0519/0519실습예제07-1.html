@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+  <html lang = "ko">
+    <head>
+      <meta charset= "UTF-8">
+      <title >03-01</title>
+        </head>
+          <body>
+            <script type = "text/javacript">
+
+            var num = 20;
+            var str = '20';
+            var bool = true;
+            var obj = {};+2
+
+
+            //피연산자가 숫자일 경우 덧셈
+
+              var sum = 0;
+
+              for(var i = 0; i<21; i++){
+              if(num%i===0 && num/i !==4 &&num/i!==5){
+
+                var c = num/i;
+                sum +=i;
+              }
+            }
+
+             //33
+               document.write('<br>');
+
+            //피연산자가 불리언인 경우 true = 1, false = 0 으로 반환후 덧셈연산
+
+          var boole = function(){
+            if(bool===true){
+              return 1;
+            } else {
+              return 0;
+            }
+          };
+
+            document.write(boole() + boole());//2
+            document.write('<br>');
+
+
+            //피연산자 중 한쪽이 문자열인 경우 나머지도 문자열 변환 후 문자열 접합연산
+
+            document.write(num + '13'); //2013
+            document.write('<br>');
+
+
+
+            //피연산자 한쪽이 객체일 경우 문자열 변환, 나머지 피연산자도 문자열 변환 후 문자열 접합
+            document.write(obj + 10); //[object object]10
+            document.write('<br>');
+
+
+
+
+            //후치증가연산은 먼저 피연산 반환후 1증가
+            var x =3;
+            var y =x++;
+            document.write('x : ' + x); //x:4
+            document.write('<br>');
+            document.write('y : ' + y); //y:3
+            document.write('<br>');
+
+
+            //전치증가연산은 피연산 먼저 1 증가후 피연산자 값 변환
+
+            x = 3;
+            y = ++x;
+            document.write('x : ' + x); //x:4
+            document.write('<br>');
+            document.write('y : ' + y); //y:3
+            document.write('<br>');
+
+
+
+          </script>
+        </body>
+  </html>

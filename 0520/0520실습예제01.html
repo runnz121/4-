@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+      id = prompt('아이디를 입력하세요'); //변수 자체를 prompt로 출력
+
+      if(id=='admin') {
+        password = prompt('비밀번호를 입력하세요')
+        if(password == '111111'){
+          prompt(id + ' 님 어서오세요 반갑습니다.');
+        } else { prompt('비밀번호가 틀렸습니다')}
+      } else {
+        prompt('없는 ID 입니다.')
+      };
+
+    </script>
+
+  </body>
+  </html>

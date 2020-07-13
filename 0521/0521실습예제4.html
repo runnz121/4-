@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style type = "text/css">
+    </style>
+  </head>
+  <body>
+        <script src="http://code.jquery.com/jquery-migrate-git.min.js"></script>
+        <script type="text/javascript">
+
+
+          function get_member(){
+            return ['etri', 'k805', 'sorialgi'];
+          };
+
+          members = get_member();
+
+          for(i = 0; i <members.length; i++){         // members 배열안에
+            document.write(members[i].toUpperCase()); //반복문과 배열을 결합
+            document.write('<br>')
+          }
+
+
+        </script>
+
+    </body>
+</html>

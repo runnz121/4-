@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<head>
+<meta http-equiv="Content-Type"
+    content="text/html;
+    charset=utf-8" />
+<title>addListener test</title>
+
+<script type="text/javascript">
+
+window.onload = function() {
+
+    var eventBtn1 = document.getElementById("eventBtn1");
+    var eventBtn2 = document.getElementById("eventBtn2");
+
+    eventBtn1.addEventListener("click", myBtnClickHandler );
+    eventBtn2.addEventListener("click", function() {
+        alert("eventBtn2가 클릭되었습니다.");
+    });
+}
+
+function myBtnClickHandler() {
+    alert("eventBtn1가 클릭되었습니다.");
+};
+
+</script>
+</head>
+
+<body>
+<button id="eventBtn1">이벤트 버튼1</button>
+<button id="eventBtn2">이벤트 버튼2</button>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title> div tag 2 (style 적용) </title>
+
+      <style>
+
+
+      #side_left {
+        width:200px;
+        height:500px;
+        background-color:gray;
+        float:left;
+        margin-top: 1px;
+        margin-right:5px;
+        display:inline-block;
+
+      }
+
+      #side_left_box {
+        width:95%;
+        height:45%;
+        background-color:white;
+        float:left;
+        display:inline;
+        margin:5px;
+
+      }
+
+      #mid_content {
+        width:400px;
+        height:500px;
+        background-color:gray;
+        position:fixed;
+        top:8px;
+        display:inline-block;
+
+      }
+
+      #side_content_box {
+        display:inline;
+        background-color:white;
+        margin:5px;
+
+      }
+
+      #side_right {
+        width:200px;
+        height:500px;
+        background-color:gray;
+        margin:5px;
+        position:absolute;
+        top:3px;
+        left:615px;
+
+
+
+
+
+      }
+
+      #side_right_box {
+        width:95%;
+        height:45%;
+        background-color:white;
+        float:left;
+        margin:5px;
+      }
+
+
+        </style>
+
+
+
+
+  </head>
+  <body>
+    <div>
+
+<!--left box-->
+    <div id="side_left" align=center><br><div id="side_left_box" align=center></div>
+    <div id="side_left_box"></div>
+  </div>
+
+
+
+
+<!--mid box-->
+    <div id="mid_content" >
+      
+      <h2 align="center">교육생 과정 리스트</h2>
+        <ol>
+          <li>Web 기본과정</li>
+          <li>Javascript 과정</li>
+          <li>DB Modeling 과정</li>
+          <li>Oracle DB 과정</li>
+          <li>Android 개발과정</li>
+          <li>Python을 이용한 데이터 분석 과정</li>
+        </ol>
+        <br><br>
+
+      <h2 align="center">교육생 과정 리스트</h2>
+        <ul>
+          <li>Web 기본과정</li>
+          <li>Javascript 과정</li>
+          <li>DB Modeling 과정</li>
+          <li>Oracle DB 과정</li>
+          <li>Android 개발과정</li>
+          <li>Python을 이용한 데이터 분석 과정</li>
+        </ul>
+
+
+
+      </div>
+
+<!--right box-->
+    <div id="side_right" align=center><br><div id="side_right_box" align=center></div>
+    <div id="side_right_box"></div>
+
+
+
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </body>
+  </html>

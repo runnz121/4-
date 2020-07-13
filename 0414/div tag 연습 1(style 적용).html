@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title> style 적용 </title>
+
+
+      <style>
+        #content {
+          color:white;
+          text-align:center;
+          overflow:hidden;
+          margin:0 auto;
+          width:800px;
+          height:200px;
+        }
+
+        <!-- overflow는 float로 위치 지정시 써주는 규칙 -->
+        <!-- class 에서 지정해준 넓이 많큼 id에서도 지정해 줘야지 같이 적용된다 -->
+        <!-- class
+
+
+        .top {
+
+          width:800px;
+          height:100px;
+          color:white;
+          background-color:#e91010;
+          text-align:center;
+          margin:0 auto;
+          font-size:1.5em;
+
+
+        }
+
+        .left {
+
+          width:400px;
+          height:200px;
+          color:white;
+          background-color:#e18383;
+          text-align:center;
+          font-size:1.5em;
+
+          float:left;
+
+
+        }
+
+        .right {
+
+          width:400px;
+          height:200px;
+          color:white;
+          background-color:#0e97d1;
+          float:right;
+          text-align:center;
+
+          font-size:1.5em;
+        }
+
+        .bottom {
+
+          width:800px;
+          height:150px;
+          color:white;
+          background-color:#cd3ae7;
+          text-align:center;
+          margin:0 auto;
+          font-size:1.5em;
+
+
+
+
+        }
+
+
+      </style>
+
+  </head>
+
+  <body>
+
+<!--top box-->
+    <div class="top"><b>top</b></div>
+
+
+<!-- div 을 나누어 left 와 right를 한 구역 안에다가 넣는다 -->
+    <div id="content"> <!-- content 속성을 따로 id로 만들어서 부여 함-->
+      <div class="left"><b>
+        left</b></div>
+      <div class="right"><b>
+        right</b></div>
+        </div>
+
+<!--bottom box-->
+    <div class="bottom"><b>center</b></div>
+
+
+
+  </body>
+  </html>

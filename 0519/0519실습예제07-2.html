@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+  <html lang = "ko">
+    <head>
+      <meta charset= "UTF-8">
+      <title >03-02</title>
+        </head>
+          <body>
+            <script type = "text/javacript">
+
+            var x = 5;
+
+            x += 3;
+            document.write("x +=3 : " + x); //x +=3:8
+
+            x = 5;
+            x -=3;
+            document.write("x +=3 : " + x);
+
+            x *=3;
+            document.write("x*=3 : " + x); //x *=3:15
+
+            x = 5;
+            x /=3;
+            document.write("x/=3 : " + x); //x /=3: 1.666666666666667
+
+
+            x = 5;
+            x %= 3;
+            document.write("x %=3 : " + x ); //x %=3:2
+
+            //대입연산자와 비트연산자를 함께 사용하는 복합대입연산자
+
+            x = 5;
+            x &=2; //비트 and연산을 통해 x가 짝수인지 검사가능
+            document.write("x &=2 : " + x); //x &=2:0
+
+            x=5;
+            x |=2;
+            document.write("x |=2 : " + x); //x |=2:7
+
+            x=5;
+            x^=2;
+            document.write("x ^=2 : " + x); //x ^=2:7
+
+            x=5;
+            x<<2;
+            document.write("x <<2 : " + x); //x <<=2:20
+
+            x = 5;
+            x>>=2;
+            document.write("x >>=2 : " + x); //x >>=2:1
+
+            x=5;
+            x>>>=2;
+            document.write("x >>>=2 : " + x); //x >>>=2:1
+
+
+
+
+
+
+          </script>
+        </body>
+  </html>

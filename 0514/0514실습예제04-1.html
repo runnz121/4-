@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+
+<head>
+
+	<meta charset="UTF-8">
+
+
+	  	<script>
+
+	  	var count = 1; //count 1 부터 시작
+
+			function sum() {  //function sum 을 생성
+
+				var ex = document.getElementById("tt"); //ex 변수를 설정 이 변수는 tt라는 ID를 가져옴
+
+				ex.innerHTML = count++; // *Element.innerHTML(=Node.textContent) : element는 요소 내에 포함된 html 마크업을 가져옴 innerHTML 대소문자 주의
+			}
+		  	</script>
+
+</head>
+
+<body>
+
+
+		<div id="tt"> let's start </div>
+    <button onclick="sum();">sum</button>
+
+
+
+
+</body>
+
+</html>

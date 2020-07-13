@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style type = "text/css">
+    </style>
+  </head>
+  <body>
+    <div>
+        <p id= "push">버튼 눌러 시작 </p>
+        <button id="get" onclick="Lotto();">랜덤 번호 생성</button>
+    </div>
+
+
+
+    <script src="http://code.jquery.com/jquery-migrate-git.min.js"></script>
+    <script type="text/javascript">
+
+    function Lotto(){
+
+        var luckynumber = new Array();
+        var number = new Array();
+
+
+          for(var i = 0; i <7; i++){
+            var rand = Math.floor(Math.random()*45)  // 45까지 난수중 하나를 rand변수에 저장한다.
+            luckynumber.push(rand); //해당 변수 rand를 luckynumber 배열에 추가한다.
+
+
+              for(var j = 0; j<7; j++){                      //이것을 7개가 될떄까지 반복한다
+                if(luckynumber.indexOf(luckynumber[i])==-1){
+                  Lotto();}
+                  else{
+                    delete.luckynumber[i]
+                  }
+
+
+                }//if
+              }//while
+
+
+
+          };//for
+
+        var push1 = document.getElementById("push");
+          push1.innerHTML = luckynumber; // push라는 id를 가져온 요소를 push1이라는 변수로 저장하고 이를 luckynumber로 바꾸는것
+     };
+
+
+
+     /*  var luckynumber = new Array();// var x = new Array();로 배열 선언
+       var rand = Math.ceil(Math.random()*45); //1~45 난수발생기
+
+
+       while(luckynumber.length <7) {
+         for(i = 0; i < luckynumber.length; i++){
+           if(lukcynumber.indexOf(rand==-1)){}
+           else{break;}
+
+         }
+         luckynumber.push(rand);
+       }*/
+
+    </script>
+
+  </body>
+  </html>
